@@ -1,0 +1,11 @@
+footer {
+  background-color: rgb(205, 50, 50);
+  width: 400px;
+  height: 935px;
+}
+
+@media screen and (max-width: 900px) {
+  footer{
+    display: none;
+  }
+}

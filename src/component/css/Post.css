@@ -1,0 +1,11 @@
+.post {
+  background-color: rgb(62, 63, 105);
+  width: 100%;
+  height: auto;
+  border: .5px solid white;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+

@@ -1,0 +1,13 @@
+.body {
+  width: 500px;
+  height: auto;
+  border: 0.5 solid white;
+  background-color: #3E3F69;
+
+}
+
+@media screen and (max-width: 500px) {
+.body{
+  max-width: 100%;
+}
+}

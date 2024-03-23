@@ -1,0 +1,49 @@
+/* SuggestedFriend.css */
+
+.suggested-friend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  /* padding: 10px; */
+  border-radius: 5px;
+  width: 400px;
+}
+
+.suggested-friend img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.suggested-friend div {
+  flex: 1;
+}
+
+.suggested-friend h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: white;
+}
+
+.suggested-friend p {
+  margin: 5px 0;
+  color: #d0d0d0;
+}
+
+.suggested-friend button {
+  padding: 8px 16px;
+  background-color: #3897f0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggested-friend button:hover {
+  background-color: #2668b5;
+}
+
+/* Suggestions.css */
+

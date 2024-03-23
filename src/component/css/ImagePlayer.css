@@ -1,0 +1,134 @@
+.imageContainer {
+  width: 500px;
+  position: relative;
+
+}
+
+.imageBefore {
+  position: absolute;
+  left: 10px;
+  top: 47%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.imageBefore i {
+  font-size: larger;
+}
+
+.imageAfter {
+  position: absolute;
+  right: 10px;
+  top: 47%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.imageAfter i {
+  font-size: larger;
+}
+
+.number {
+  width: 35px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  background-color: black;
+  scroll-behavior: smooth;
+  width: auto;
+  height: auto;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slide img {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+
+.slider video {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+  z-index: -1;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: absolute;
+  right: 50%;
+  bottom: 10px;
+}
+
+.bullet {
+  width: 5px;
+  height: 5px;
+  display: block;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+.volume {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.playStop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  display: none;
+
+}
+
+.disable,
+.imageBefore {
+  display: none;
+}
+
+.acf {
+  background-color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .imageContainer {
+    width: 100%;
+    height: auto;
+  }
+
+  .slide {
+    min-width: 100%;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide video {
+    width: 100%;
+    height: 100%;
+  }
+}
