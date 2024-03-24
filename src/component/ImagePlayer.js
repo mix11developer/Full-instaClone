@@ -6,35 +6,37 @@ function ImagePlayer(props) {
 
   const [firstTime, setFirstState] = React.useState(false)
   const playShownVideo = (width, firstTime) => {
+    var ss = document.querySelector(`[data-pid="${props.data.postID}"]`).querySelector(".slider")
+    const vv = document.querySelector(`[data-pid="${props.data.postID
+      }"]`).querySelectorAll(".video")
+    var videos = Array.from(vv)
     if (firstTime) {
-      var ss = document.querySelector(`[data-pid="${props.data.postID}"]`).querySelector(".slider")
       if (width >= 500) {
         var w = 500
       } else {
         w = width
       }
-      const vv = document.querySelector(`[data-pid="${props.data.postID
-        }"]`).querySelectorAll(".video")
-      var videos = Array.from(vv)
       videos && videos.map((video) => {
         video.pause()
         return null
       })
-      if (ss.children[ss.scrollLeft / w].children[0].tagName === "VIDEO") {
-        ss.children[ss.scrollLeft / w].children[0].play()
-        document.querySelector(`[data-pid="${props.data.postID
-          }"]`).querySelector("#playStop").className = "playStop disable"
+      if (ss.children) {
+        if (ss.children[ss.scrollLeft / w].children[0].tagName === "VIDEO") {
+          console.log('running')
+          ss.children[ss.scrollLeft / w].children[0].play()
+          document.querySelector(`[data-pid="${props.data.postID
+            }"]`).querySelector("#playStop").className = "playStop disable"
+        }
+      } else {
+        videos && videos.map((video) => {
+          video.pause()
+          return null
+        })
+        if (ss.children[ss.scrollLeft / w].children[0].tagName === "VIDEO") {
+          document.querySelector(`[data-pid="${props.data.postID
+            }"]`).querySelector("#playStop").className = "playStop"
+        }
       }
-    } else {
-      // const vv = document.querySelector(`[data-pid="${props.data.postID
-      // }"]`).querySelectorAll(".video")
-      // var videos = Array.from(vv)
-      videos && videos.map((video) => {
-        video.pause()
-        return null
-      })
-      document.querySelector(`[data-pid="${props.data.postID
-        }"]`).querySelector("#playStop").className = "playStop"
     }
   }
 
@@ -63,9 +65,12 @@ function ImagePlayer(props) {
           document.querySelector(`[data-pid="${props.data.postID
             }"]`).querySelector(".imageAfter").style.display = "block"
         }
+
         if (ss.children[ss.scrollLeft / 500].children[0].tagName === "VIDEO") {
           document.querySelector(`[data-pid="${props.data.postID
             }"]`).querySelector(".volume").style.display = "block"
+          document.querySelector(`[data-pid="${props.data.postID
+            }"]`).querySelector("#playStop").className = "playStop"
         } else {
           document.querySelector(`[data-pid="${props.data.postID
             }"]`).querySelector(".volume").style.display = "none"
@@ -177,9 +182,10 @@ function ImagePlayer(props) {
     }, 200)
   }
 
-
   const brev = (e) => {
     e.stopPropagation();
+    document.querySelector(`[data-pid="${props.data.postID
+      }"]`).querySelector("#playStop").className = "playStop disable"
     const ss = document.querySelector(`[data-pid="${props.data.postID
       }"]`).querySelector(".slider")
     if (window.innerWidth > 500) {
@@ -201,6 +207,8 @@ function ImagePlayer(props) {
 
   const next = (e) => {
     e.stopPropagation()
+    document.querySelector(`[data-pid="${props.data.postID
+      }"]`).querySelector("#playStop").className = "playStop disable"
     const ss = document.querySelector(`[data-pid="${props.data.postID
       }"]`).querySelector(".slider")
     if (window.innerWidth > 500) {
@@ -223,6 +231,7 @@ function ImagePlayer(props) {
   window.addEventListener("load", (e) => {
     chicker()
   })
+
   const video = (e) => {
     e.stopPropagation()
     var ss = document.querySelector(`[data-pid="${props.data.postID
@@ -260,7 +269,7 @@ function ImagePlayer(props) {
   const slider = (
     <div className='slider' onWheel={handle}>
       {props.data.mediaFiles && props.data.mediaFiles.map((image, i) => {
-        if (/\w+.(mp4|mkv|mvo)/g.test(image)) {
+        if (/\w+.(mp4|mov|wmv|avi|flv|mkv|webm)/g.test(image)) {
           return (
             <div className='slide' key={i + 1}>
               <video
@@ -273,7 +282,7 @@ function ImagePlayer(props) {
             </div>
           )
         }
-        if (/\w+.(jpg|png|tiff|jpeg)/g.test(image)) {
+        if (/\w+.(gif|jpg|jpeg|tiff|png|webp|bmp)/g.test(image)) {
           return (
             <div className='slide' key={i + 1}>
               <img
